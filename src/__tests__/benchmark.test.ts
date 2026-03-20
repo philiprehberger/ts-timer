@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { benchmark } from '../dist/index.js';
+import { benchmark } from '../../dist/index.js';
 
 describe('benchmark', () => {
   it('should return all expected statistics', () => {
