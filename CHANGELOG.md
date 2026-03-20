@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- Add CI workflow and badges to README
+
 ## 0.1.1
 
 - Exclude test files from typecheck

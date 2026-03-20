@@ -1,7 +1,8 @@
 # @philiprehberger/ts-timer
 
-[![npm version](https://img.shields.io/npm/v/@philiprehberger/ts-timer)](https://www.npmjs.com/package/@philiprehberger/ts-timer)
-[![license](https://img.shields.io/npm/l/@philiprehberger/ts-timer)](./LICENSE)
+[![CI](https://github.com/philiprehberger/ts-timer/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-timer/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@philiprehberger/ts-timer.svg)](https://www.npmjs.com/package/@philiprehberger/ts-timer)
+[![License](https://img.shields.io/github/license/philiprehberger/ts-timer)](LICENSE)
 
 Precise timing utilities — measure, benchmark, countdown.
 
