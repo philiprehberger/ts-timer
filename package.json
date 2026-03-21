@@ -1,6 +1,6 @@
 {
   "name": "@philiprehberger/timer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Precise timing utilities — measure, benchmark, countdown",
   "type": "module",
   "main": "./dist/index.cjs",

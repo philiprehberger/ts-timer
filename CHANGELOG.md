@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+- Republish under new npm package name
+
 ## 0.1.2
 
 - Add CI workflow and badges to README
