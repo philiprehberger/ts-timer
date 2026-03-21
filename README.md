@@ -1,7 +1,7 @@
-# @philiprehberger/ts-timer
+# @philiprehberger/timer
 
 [![CI](https://github.com/philiprehberger/ts-timer/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-timer/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/@philiprehberger/ts-timer.svg)](https://www.npmjs.com/package/@philiprehberger/ts-timer)
+[![npm version](https://img.shields.io/npm/v/@philiprehberger/timer.svg)](https://www.npmjs.com/package/@philiprehberger/timer)
 [![License](https://img.shields.io/github/license/philiprehberger/ts-timer)](LICENSE)
 
 Precise timing utilities — measure, benchmark, countdown
@@ -13,7 +13,7 @@ Precise timing utilities — measure, benchmark, countdown
 ## Installation
 
 ```bash
-npm install @philiprehberger/ts-timer
+npm install @philiprehberger/timer
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ npm install @philiprehberger/ts-timer
 ### Timer
 
 ```ts
-import { timer } from '@philiprehberger/ts-timer';
+import { timer } from '@philiprehberger/timer';
 
 const t = timer();
 
@@ -39,7 +39,7 @@ const total = t.stop();
 ### Measure
 
 ```ts
-import { measure, measureAsync } from '@philiprehberger/ts-timer';
+import { measure, measureAsync } from '@philiprehberger/timer';
 
 const { result, duration } = measure(() => heavyComputation());
 console.log(`Result: ${result}, took ${duration}ms`);
@@ -51,7 +51,7 @@ console.log(`Fetched in ${ms}ms`);
 ### Benchmark
 
 ```ts
-import { benchmark } from '@philiprehberger/ts-timer';
+import { benchmark } from '@philiprehberger/timer';
 
 const stats = benchmark(() => JSON.parse('{"a":1}'), {
   iterations: 5000,
@@ -70,7 +70,7 @@ console.log(`Ops/sec: ${stats.ops.toFixed(0)}`);
 ### Format Duration
 
 ```ts
-import { formatDuration } from '@philiprehberger/ts-timer';
+import { formatDuration } from '@philiprehberger/timer';
 
 formatDuration(0);         // "0ms"
 formatDuration(1500);      // "1s 500ms"

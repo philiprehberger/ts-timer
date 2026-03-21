@@ -1,5 +1,5 @@
 {
-  "name": "@philiprehberger/ts-timer",
+  "name": "@philiprehberger/timer",
   "version": "0.1.2",
   "description": "Precise timing utilities — measure, benchmark, countdown",
   "type": "module",
