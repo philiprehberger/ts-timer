@@ -6,10 +6,6 @@
 
 Precise timing utilities — measure, benchmark, countdown
 
-## Requirements
-
-- Node.js >= 18
-
 ## Installation
 
 ```bash

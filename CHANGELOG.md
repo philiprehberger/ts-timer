@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4
+
+- Standardize README and CHANGELOG formatting
+
 ## 0.1.3
 
 - Republish under new npm package name
@@ -12,9 +16,7 @@
 
 - Exclude test files from typecheck
 
-## 0.1.0 — 2026-03-20
-
-### Added
+## 0.1.0
 
 - `timer()` with `elapsed`, `stop`, `reset`, `lap`, `laps`, and `format` methods
 - `measure(fn)` for synchronous timing
