@@ -1,8 +1,8 @@
 # @philiprehberger/timer
 
-[![CI](https://github.com/philiprehberger/timer-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/timer-ts/actions/workflows/ci.yml)
+[![CI](https://github.com/philiprehberger/ts-timer/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-timer/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/timer.svg)](https://www.npmjs.com/package/@philiprehberger/timer)
-[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/timer-ts)](https://github.com/philiprehberger/timer-ts/commits/main)
+[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/ts-timer)](https://github.com/philiprehberger/ts-timer/commits/main)
 
 Precise timing utilities — measure, benchmark, countdown
 
@@ -13,6 +13,14 @@ npm install @philiprehberger/timer
 ```
 
 ## Usage
+
+```ts
+import { timer, measure, benchmark, interval, formatDuration } from '@philiprehberger/timer';
+
+const t = timer();
+doSomeWork();
+console.log(t.format()); // "245ms"
+```
 
 ### Timer
 
@@ -73,48 +81,47 @@ formatDuration(1500);      // "1s 500ms"
 formatDuration(3_661_500); // "1h 1m 1s 500ms"
 ```
 
+### Drift-Corrected Interval
+
+```ts
+import { interval } from '@philiprehberger/timer';
+
+const handle = interval(() => poll(), 1000, { immediate: true });
+
+// later
+handle.stop();
+```
+
+Each tick is scheduled relative to the intended next time, so a slow callback
+does not cause cumulative drift. Async callbacks are awaited before the next
+tick is scheduled.
+
 ## API
 
-### `timer(): Timer`
+| Function | Description |
+|----------|-------------|
+| `timer()` | Create a high-resolution timer with `elapsed`/`stop`/`reset`/`lap`/`laps`/`format` |
+| `measure(fn)` | Measure a synchronous function — returns `{ result, duration }` |
+| `measureAsync(fn)` | Measure an async function — returns a promise of `{ result, duration }` |
+| `benchmark(fn, options?)` | Benchmark a function over many iterations |
+| `interval(fn, ms, options?)` | Drift-corrected repeating interval; returns a stoppable handle |
+| `formatDuration(ms)` | Format milliseconds as `"1h 2m 3s 45ms"` |
 
-Creates a high-resolution timer.
+### `IntervalOptions`
 
-- `.elapsed(): number` — Current elapsed time in milliseconds.
-- `.stop(): number` — Stops the timer; returns elapsed time.
-- `.reset(): void` — Resets and restarts the timer.
-- `.lap(): Lap` — Records a lap; returns `{ index, split, elapsed }`.
-- `.laps(): Lap[]` — Returns all recorded laps.
-- `.format(): string` — Formats the elapsed time as a human-readable string.
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `immediate` | `boolean` | `false` | Run the callback once on start as well as on the schedule |
+| `maxTicks` | `number` | `undefined` | Stop automatically after N ticks |
+| `onError` | `(err: unknown) => void` | `undefined` | Receive errors thrown by the callback (otherwise rethrown) |
 
-### `measure<T>(fn: () => T): MeasureResult<T>`
+### `BenchmarkResult`
 
-Measures execution time of a synchronous function. Returns `{ result, duration }`.
-
-### `measureAsync<T>(fn: () => Promise<T>): Promise<MeasureResult<T>>`
-
-Measures execution time of an asynchronous function. Returns `{ result, duration }`.
-
-### `benchmark(fn: () => void, options?: BenchmarkOptions): BenchmarkResult`
-
-Benchmarks a function over many iterations.
-
-**Options:**
-- `iterations` — Number of measured iterations (default: `1000`).
-- `warmup` — Number of warmup iterations (default: `100`).
-
-**Result:**
-- `mean` — Arithmetic mean in ms.
-- `median` — Median in ms.
-- `p95` — 95th percentile in ms.
-- `p99` — 99th percentile in ms.
-- `min` — Minimum duration in ms.
-- `max` — Maximum duration in ms.
-- `ops` — Operations per second.
-- `iterations` — Number of iterations run.
-
-### `formatDuration(ms: number): string`
-
-Formats a millisecond value into a human-readable string (e.g. `"1h 2m 3s 45ms"`).
+| Property | Description |
+|----------|-------------|
+| `mean`, `median`, `p95`, `p99`, `min`, `max` | Latency stats in ms |
+| `ops` | Operations per second based on mean |
+| `iterations` | Number of measured iterations |
 
 ## Development
 
@@ -129,11 +136,11 @@ npm run typecheck
 
 If you find this project useful:
 
-⭐ [Star the repo](https://github.com/philiprehberger/timer-ts)
+⭐ [Star the repo](https://github.com/philiprehberger/ts-timer)
 
-🐛 [Report issues](https://github.com/philiprehberger/timer-ts/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+🐛 [Report issues](https://github.com/philiprehberger/ts-timer/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
 
-💡 [Suggest features](https://github.com/philiprehberger/timer-ts/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+💡 [Suggest features](https://github.com/philiprehberger/ts-timer/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
 
 ❤️ [Sponsor development](https://github.com/sponsors/philiprehberger)
 

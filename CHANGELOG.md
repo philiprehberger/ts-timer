@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0
+
+- Add `interval(fn, ms, options?)` for drift-corrected repeating execution with `immediate`, `maxTicks`, and `onError` options
+- Run `npm test` in the publish workflow before publishing to npm
+- Convert API section to standardized table format and add Interval usage example
+- Fix README badge and Support links to point to the actual `ts-timer` repository
+- Remove stale root-level `tests/` directory; canonical tests live in `src/__tests__/`
+
 ## 0.1.5
 
 - Standardize README to 3-badge format with emoji Support section
